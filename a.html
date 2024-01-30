@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page not found</title>
+    <style>
+        body {
+            background-color: #092742;
+            color: rgb(166, 166, 166);
+        }
+    </style>
+</head>
+<body>
+    <ul style="list-style: none; margin-left: 50px;">
+        <a href="#div0" style="margin-right: 10px;">N</a>
+        <a href="#div1" style="margin-right: 10px;">1</a>
+        <a href="#div2" style="margin-right: 10px;">2</a>
+        <a href="#div3" style="margin-right: 10px;">3</a>
+        <a href="#div4" style="margin-right: 10px;">4</a>
+        <a href="#div5" style="margin-right: 10px;">5</a>
+        <a href="#div6">6</a>
+    </ul>
+    
+    <div id="div0" style="margin: 0; display: flex; justify-content: center; align-items: center; height: 100vh; text-align: center; color: white;">
+        <p style="font-size: 100px;">404 ‎ </p>
+        <h1>PAGE NOT FOUND</h1>
+    </div>
+
+<pre>
+    <div id="div1">
+
+        <div style="padding-bottom: 500px;">
+
+        </div>
+        <h2>1</h2>
+using System;
+
+namespace calculator
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string value;
+            do
+            {
+                int res;
+                Console.Write("Enter first number:");
+                int num1 = Convert.ToInt32(Console.ReadLine());
+                Console.Write("Enter second number:");
+                int num2 = Convert.ToInt32(Console.ReadLine());
+                Console.Write("Enter symbol(/,+,-,*):");
+                string symbol = Console.ReadLine();
+
+                switch (symbol)
+                {
+                    case "+":
+                        res = num1 + num2;
+                        Console.WriteLine("Addition:" + res);
+                        break;
+                    case "-":
+                        res = num1 - num2;
+                        Console.WriteLine("Subtraction:" + res);
+                        break;
+                    case "*":
+                        res = num1 * num2;
+                        Console.WriteLine("Multiplication:" + res);
+                        break;
+                    case "/":
+                        res = num1 / num2;
+                        Console.WriteLine("Division:" + res);
+                        break;
+                    default:
+                        Console.WriteLine("Wrong input");
+                        break;
+                }
+
+                Console.ReadLine();
+                Console.Write("Do you want to continue(y/n):");
+                value = Console.ReadLine();
+
+            } while (value == "y" || value == "Y");
+        }
+    }
+}
+
+    </div>
+</pre>
+<pre>
+    <div id="div2">
+        <h2>2</h2>
+using System;
+
+namespace ArmstrongNumbers
+{
+    class ArmstrongNumbers
+    {
+        static void Main()
+        {
+            Console.WriteLine("Armstrong Numbers between 1 and 1000:");
+
+            for (int number = 1; number <= 1000; number++)
+            {
+                if (IsArmstrongNumber(number))
+                {
+                    Console.Write($"{number} ");
+                }
+            }
+
+            Console.WriteLine();
+        }
+
+        static bool IsArmstrongNumber(int num)
+        {
+            int originalNumber = num;
+            int numDigits = CountDigits(num);
+            int sum = 0;
+
+            while (num > 0)
+            {
+                int digit = num % 10;
+                sum += (int)Math.Pow(digit, numDigits);
+                num /= 10;
+            }
+
+            return sum == originalNumber;
+        }
+
+        static int CountDigits(int num)
+        {
+            int count = 0;
+
+            while (num > 0)
+            {
+                num /= 10;
+                count++;
+            }
+
+            return count;
+        }
+    }
+}
+    </div>
+</pre>
+
+<pre>
+    <div id="div3">
+        <h2>3</h2>
+using System;
+namespace SubstringList
+{
+    class SubstringList
+    {
+        static void Main()
+        {
+            Console.Write("Enter a string: ");
+            string inputString = Console.ReadLine();
+            Console.WriteLine("\nList of Substrings:");
+            ListAllSubstrings(inputString);
+        }
+
+        static void ListAllSubstrings(string input)
+        {
+            for (int start = 0; start < input.Length; start++)
+            {
+                for (int length = 1; length <= input.Length - start; length++)
+                {
+                    string substring = input.Substring(start, length);
+                    Console.WriteLine(substring);
+                }
+            }
+        }
+    }
+}
+    </div>
+</pre>
+<pre>
+    <div id="div4">
+        <h2>4</h2>
+using System;
+namespace ExceptionDemo
+{
+    class ExceptionDemo
+    {
+        static void Main()
+        {
+            try
+            {
+                Console.WriteLine("Division by Zero Exception:");
+                Console.Write("Enter the numerator: ");
+                int numerator = int.Parse(Console.ReadLine());
+                Console.Write("Enter the denominator: ");
+                int denominator = int.Parse(Console.ReadLine());
+                int result = DivideNumbers(numerator, denominator);
+                Console.WriteLine($"Result: {result}");
+            }
+            catch (DivideByZeroException ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+
+            Console.WriteLine("\n--------------------------------\n");
+
+            try
+            {
+                Console.WriteLine("Index Out of Range Exception:");
+                Console.Write("Enter the size of the array: ");
+                int size = int.Parse(Console.ReadLine());
+                int[] numbers = new int[size];
+
+                Console.Write("Enter the index to access: ");
+                int index = int.Parse(Console.ReadLine());
+                int value = AccessArrayElement(numbers, index);
+                Console.WriteLine($"Value at index {index}: {value}");
+            }
+            catch (IndexOutOfRangeException ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+        }
+
+        static int DivideNumbers(int numerator, int denominator)
+        {
+            if (denominator == 0)
+            {
+                throw new DivideByZeroException("Cannot divide by zero.");
+            }
+            return numerator / denominator;
+        }
+
+        static int AccessArrayElement(int[] array, int index)
+        {
+            if (index < 0 || index >= array.Length)
+            {
+                throw new IndexOutOfRangeException("Index is out of range.");
+            }
+            return array[index];
+        }
+    }
+}
+
+    </div>
+</pre>
+<pre>
+    <div id="div5">
+        <h2>5</h2>
+using System;
+namespace PascalTriangle
+{
+    class PascalTriangle
+    {
+        static void Main()
+        {
+            Console.Write("Enter the number of rows for Pascal's Triangle: ");
+            int numRows = int.Parse(Console.ReadLine());
+            int[,] triangle = GeneratePascalTriangle(numRows);
+            PrintPascalTriangle(triangle);
+        }
+
+        static int[,] GeneratePascalTriangle(int rows)
+        {
+            int[,] triangle = new int[rows, rows];
+
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j <= i; j++)
+                {
+                    if (j == 0 || j == i)
+                    {
+                        triangle[i, j] = 1;
+                    }
+                    else
+                    {
+                        triangle[i, j] = triangle[i - 1, j - 1] + triangle[i - 1, j];
+                    }
+                }
+            }
+
+            return triangle;
+        }
+
+        static void PrintPascalTriangle(int[,] triangle)
+        {
+            Console.WriteLine("\nPascal's Triangle:");
+
+            for (int i = 0; i < triangle.GetLength(0); i++)
+            {
+                for (int c = 0; c <= (triangle.GetLength(0) - i - 2); c++)
+                {
+                    Console.Write(" ");
+                }
+
+                for (int j = 0; j <= i; j++)
+                {
+                    Console.Write(triangle[i, j] + " ");
+                }
+
+                Console.WriteLine();
+            }
+        }
+
+    }
+}
+    </div>
+</pre>
+<pre>
+    <div id="div6">
+        <h2>6</h2>
+using System;
+namespace Program
+{
+    class Program
+    {
+        static void Main()
+        {
+            Console.WriteLine("Enter the number of rows for Floyd's Triangle:");
+
+            if (int.TryParse(Console.ReadLine(), out int rows) && rows > 0)
+            {
+                int[][] floydsTriangle = GenerateFloydsTriangle(rows);
+                Console.WriteLine("Floyd's Triangle:");
+                PrintFloydsTriangle(floydsTriangle);
+            }
+            else
+            {
+                Console.WriteLine("Invalid input. Please enter a positive integer for the number of rows.");
+            }
+        }
+
+        static int[][] GenerateFloydsTriangle(int rows)
+        {
+            int[][] triangle = new int[rows][];
+            int currentValue = 1;
+
+            for (int i = 0; i < rows; i++)
+            {
+                triangle[i] = new int[i + 1];
+
+                for (int j = 0; j <= i; j++)
+                {
+                    triangle[i][j] = currentValue++;
+                }
+            }
+
+            return triangle;
+        }
+
+        static void PrintFloydsTriangle(int[][] triangle)
+        {
+            foreach (var row in triangle)
+            {
+                foreach (var number in row)
+                {
+                    Console.Write($"{number} ");
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}
+    </div>
+    <p>---------------------------------------------------------------------------------</p>
+<pre>
+    <div>
+using System;
+class Floyds
+{
+    static void Main()
+    {
+        Console.WriteLine("Enter the number of rows:");
+        int n = Convert.ToInt32(Console.ReadLine());
+        Console.WriteLine("FLOYD'S TRIANGLE");
+
+        int[][] a = new int[n][];
+        for (int i = 0; i < n; i++)
+        {
+            a[i] = new int[i + 1];
+        }
+
+        int count = 1;
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < a[i].Length; j++)
+            {
+                a[i][j] = count;
+                count++;
+            }
+        }
+
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < a[i].Length; j++)
+            {
+                Console.Write(a[i][j] + " ");
+            }
+            Console.WriteLine();
+        }
+    }
+}
+    </div>
+</pre>
+</pre>
+</body>
+</html>
