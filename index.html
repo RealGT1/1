@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Page not found</title>
+    <style>
+        body {
+            background-color: #ffffff;
+            color: rgb(255, 255, 255);
+        }
+    </style>
+</head>
+
+<body>
+    <ul style="list-style: none; margin-left: 50px;color: #ffffff;">
+        <a href="#div0" style="margin-right: 10px;color: #ffffff;">N</a>
+        <a href="#div1" style="margin-right: 10px;color: #ffffff;">1</a>
+        <a href="#div2" style="margin-right: 10px;color: #ffffff;">2</a>
+        <a href="#div3" style="margin-right: 10px;color: #ffffff;">3</a>
+        <a href="#div4" style="margin-right: 10px;color: #ffffff;">4</a>
+        <a href="#div5" style="margin-right: 10px;color: #ffffff;">5</a>
+
+    </ul>
+
+    <div id="div0"
+        style="margin: 0; display: flex; justify-content: center; align-items: center; height: 100vh; text-align: center; color: white;">
+        <p style="font-size: 100px;"> ‎ </p>
+        <h1></h1>
+    </div>
+
+    <pre>
+    <div id="div1">
+
+        <div style="padding-bottom: 500px;">
+
+        </div>
+        <h2>1</h2>
+        #include&lt;stdio.h&gt;
+        #include&lt;conio.h&gt;
+            
+            int main()
+            {
+                while (1) { 
+                    int locks, stocks, barrels, t_sales, flag = 0;
+                    float commission;
+            
+            
+                    printf("Enter the total number of locks: ");
+                    scanf("%d", &locks);
+                    if ((locks <= 0) || (locks > 70)) {
+                        flag = 1;
+                    }
+            
+                    printf("Enter the total number of stocks: ");
+                    scanf("%d", &stocks);
+                    if ((stocks <= 0) || (stocks > 80)) {
+                        flag = 1;
+                    }
+            
+                    printf("Enter the total number of barrels: ");
+                    scanf("%d", &barrels);
+                    if ((barrels <= 0) || (barrels > 90)) {
+                        flag = 1;
+                    }
+            
+                    if (flag == 1) {
+                        printf("Invalid input\n");
+                        getch();
+                        continue; 
+                    }
+            
+                    t_sales = (locks * 45) + (stocks * 30) + (barrels * 25);
+            
+                    if (t_sales <= 1000) {
+                        commission = 0.10 * t_sales;
+                    } else if (t_sales <= 1800) {
+                        commission = 0.10 * 1000;
+                        commission += 0.15 * (t_sales - 1000);
+                    } else {           
+                       commission = 0.10 * 1000;
+                       commission += 0.15 * 800;
+                       commission += 0.20 * (t_sales - 1800);
+                    }
+            
+                    printf("The total sales is %d\nThe commission is %f\n", t_sales, commission);
+            
+                    printf("Do you want to continue? (y/n): ");
+                    char continue_flag = getche(); 
+            
+                    printf("\n");
+            
+                    if (continue_flag != 'y' && continue_flag != 'Y') {
+                        break; 
+                    }
+                }
+            
+                return 0;
+            }
+    
+            
+
+            Desc,input LSB,Sales,Expected-C,Actual,Status
+            1 1 1 100 10
+            1 1 2 125 12.5
+            1 2 1 130 13
+            2 1 1 145 14.5
+            5 5 5 500 50
+            10 10 9 975 97.5
+            10 9 10 970 97
+            9 10 10 955 95.5
+            10 10 10 1000 100
+            10 10 11 1023 103.75
+            10 11 10 1030 104.5
+            11 10 10 1045 106.75
+            14 14 13 1400 160 
+            18 18 17 1775 216.25
+            18 17 18 1770 215.5
+            17 18 18 1755 213.25
+            18 18 18 1800 220
+            18 18 19 1825 225
+            18 19 18 1830 226 
+            19 18 18 1845 229
+            48 48 48 4800 820
+     
+     TEST REPORT:
+     1. No of TC’s Executed:
+     2. No of Defects Raised:
+     3. No of TC’s Pass:
+     4. No of TC’s Failed:
+
+    </div>
+</pre>
+    <pre>
+    <div id="div2">
+        <h2>2</h2>
+        #include&lt;stdio.h&gt;
+        #include&lt;stdlib.h&gt;
+            
+            int main() {
+                int month[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+                int d, m, y, nd, nm, ny, ndays;
+                char choice;
+            
+                while (1) {
+                    while (1) {
+                        int valid = 1;  
+                        printf("Enter the date, month, year: ");
+                        scanf("%d%d%d", &d, &m, &y);
+            
+                       
+                        if (y < 1812 || y > 2012) {
+                            printf("Invalid Input Year\n");
+                            valid = 0;
+                        }
+            
+                       
+                        if (m < 1 || m > 12) {
+                            printf("Invalid Input Month\n");
+                            valid = 0;
+                        }
+            
+                        
+                        if (m >= 1 && m <= 12) {
+                            ndays = month[m - 1];
+            
+                           
+                            if (m == 2) {
+                                if ((y % 100 == 0 && y % 400 == 0) || (y % 100 != 0 && y % 4 == 0)) {
+                                    ndays = 29;
+                                }
+                            }
+            
+                            if (d <= 0 || d > ndays) {
+                                printf("Invalid Input Day\n");
+                                valid = 0;
+                            }
+                        } else if (d <= 0 || d > 31) {  
+                            printf("Invalid Input Day\n");
+                            valid = 0;
+                        }
+            
+                        if (valid) {
+                            break;  
+                        }
+                    }
+            
+                    nd = d + 1;
+                    nm = m;
+                    ny = y;
+            
+                    if (nd > ndays) {
+                        nd = 1;
+                        nm++;
+                    }
+            
+                    if (nm > 12) {
+                        nm = 1;
+                        ny++;
+                    }
+            
+                    printf("\nGiven date is %d:%d:%d", d, m, y);
+                    printf("\nNext day date is %d:%d:%d", nd, nm, ny);
+            
+                    printf("\nDo you want to continue? (y/n): ");
+                    scanf(" %c", &choice);  
+            
+                    if (choice != 'y' && choice != 'Y') {
+                        break;
+                    }
+                }
+            
+                return 0;
+            }
+            
+
+
+            First Attempt
+
+        Weak and Strong Normal
+        DD MM YYYY ,Expected,Actual,Status
+        15 6 1900 
+
+        Weak Robust:
+        15 6 1900
+        -1 6 1900 DAY NIR
+        32 6 1900 DAY NIR
+        15 -1 1900 MNIR
+        15 13 1900 MNIR
+        15 6 1899 YNIR
+        15 6 2013 YNIR
+
+        Strong Robust:
+        15 -1 1900 MNIR
+        -1 6 1900 DNIR
+        15 6 1899 YNIR
+        -1 -1 1900 DNIR MNIR
+        -1 6 1899 DNIR YNIR
+        15 -1 1899 MNIR YNIR
+        -1 -1 1899 DNIR MNIR YNIR
+
+        Second Attempt
+
+        Weak Normal
+        14 6 2000
+        29 7 1996
+        30 2 2002 IMP DATE
+        31 6 2000 IMP DATE
+
+        Strong Normal
+        14 6 2000
+        14 6 1996
+        14 6 2002
+        29 6 2000
+        29 6 1996
+        29 6 2002
+        30 6 2000 Invalid Input Date
+        30 6 1996 Invalid Input Date 
+        30 6 2002 Invalid Input Date
+        31 6 2000 Invalid Input Date
+        31 6 1996 Invalid Input Date
+        31 6 2002 Invalid Input Date
+        14 7 2000
+        14 7 1996
+        14 7 2002
+        29 7 2000
+        29 7 1996
+        29 7 2002
+        30 7 2000
+        30 7 1996
+        30 7 2002
+        31 7 2000
+        31 7 1996
+        31 7 2002
+        14 2 2000
+        14 2 1996
+        14 2 2002
+        29 2 2000 Invalid Input Date
+        29 2 1996
+        29 2 2002 Invalid Input Date
+        30 2 2000 Invalid Input Date
+        30 2 1996 Invalid Input Date
+        30 2 2002 Invalid Input Date
+        31 2 2000 Invalid Input Date
+        31 2 1996 Invalid Input Date
+        31 2 2002 Invalid Input Date
+
+Test Report:
+1. No of TC’s Executed:
+2. No of Defects Raised:
+3. No of TC’s Pass:
+4. No of TC’s Failed:
+
+    </div>
+</pre>
+
+    <pre>
+    <div id="div3">
+        <h2>3</h2>
+        #include &lt;stdio.h&gt;
+        #include &lt;ctype.h&gt;
+        #include &lt;conio.h&gt;
+        #include &lt;process.h&gt;
+            
+            int main() {
+                int a, b, c;
+                char choice;
+            
+                while (1) {
+                    printf("Enter three sides of the triangle: \n");
+                    scanf("%d%d%d", &a, &b, &c);
+            
+                    if ((a < b + c) && (b < a + c) && (c < a + b)) {
+                        if ((a == b) && (b == c)) {
+                            printf("Equilateral triangle");
+                        } else if ((a != b) && (a != c) && (b != c)) {
+                            printf("Scalene triangle");
+                        } else {
+                            printf("Isosceles triangle");
+                        }
+                    } else {
+                        printf("Triangle cannot be formed");
+                    }
+            
+                    printf("\nDo you want to check another triangle? (y/n): \n");
+                    choice = getch();
+            
+                    if (tolower(choice) != 'y') {
+                        break;
+                    }
+                }
+            
+                return 0;
+            }
+            
+            Desc,a,b,c,Expected,Actual,Status
+            r1   4 1 2 not
+            r1   1 4 2 not 
+            r1   1 2 4 not 
+            r2   5 5 5 equi
+            r2   2 2 3 iso
+            r2   2 3 2 iso
+            r2   3 2 2 iso 
+            r2   3 4 5 scalene
+    
+    Test Report:
+    1. No of TC’s Executed: 08
+    2. No of Defects Raised:
+    3. No of TC’s Pass:
+    4. No of TC’s Failed:
+
+    </div>
+</pre>
+    <pre>
+    <div id="div4">
+        <h2>4</h2>
+        
+        #include&lt;stdio.h&gt;
+        #include&lt;conio.h&gt;
+            
+            int main()
+            {
+                while (1) { 
+                    int locks, stocks, barrels, t_sales, flag = 0;
+                    float commission;
+            
+            
+                    printf("Enter the total number of locks: ");
+                    scanf("%d", &locks);
+                    if ((locks <= 0) || (locks > 70)) {
+                        flag = 1;
+                    }
+            
+                    printf("Enter the total number of stocks: ");
+                    scanf("%d", &stocks);
+                    if ((stocks <= 0) || (stocks > 80)) {
+                        flag = 1;
+                    }
+            
+                    printf("Enter the total number of barrels: ");
+                    scanf("%d", &barrels);
+                    if ((barrels <= 0) || (barrels > 90)) {
+                        flag = 1;
+                    }
+            
+                    if (flag == 1) {
+                        printf("Invalid input\n");
+                        getch();
+                        continue; 
+                    }
+            
+                    t_sales = (locks * 45) + (stocks * 30) + (barrels * 25);
+            
+                    if (t_sales <= 1000) {
+                        commission = 0.10 * t_sales;
+                    } else if (t_sales <= 1800) {
+                        commission = 0.10 * 1000;
+                        commission += 0.15 * (t_sales - 1000);
+                    } else {           
+                       commission = 0.10 * 1000;
+                       commission += 0.15 * 800;
+                       commission += 0.20 * (t_sales - 1800);
+                    }
+            
+                    printf("The total sales is %d\nThe commission is %f\n", t_sales, commission);
+            
+                    printf("Do you want to continue? (y/n): ");
+                    char continue_flag = getche(); 
+            
+                    printf("\n");
+            
+                    if (continue_flag != 'y' && continue_flag != 'Y') {
+                        break; 
+                    }
+                }
+            
+                return 0;
+            }
+
+
+            Desc,Input LSB,Expected,Actual,Status
+        r1c1        -2 40 45 Out of range
+        r1c1        90 40 45  Out of range
+        r1c2        35 -3 45 Out of range
+        r1c2        35 100 45 Out of range
+        r1c3        35 40 -10  Out of range
+        r1c3        35 40 150  Out of range
+        r2        5 5 5       500 a1:50
+        r2        15 15 15    1500 a2:175
+        r2        25 25 25    2500 a3:360
+        
+
+
+        Test Report:
+    1. No of TC’s Executed: 09
+    2. No of Defects Raised:
+    3. No of TC’s Pass:
+    4. No of TC’s Failed:
+    </div>
+</pre>
+    <pre>
+    <div id="div5">
+        <h2>5</h2>
+        
+    </div>
+</pre>
+    <pre>
+    <div id="div6">
+        <h2>6</h2>
+        
+    </div>
+    <p>---------------------------------------------------------------------------------</p>
+<pre>
+    <div>
+
+    </div>
+</pre>
+    </pre>
+</body>
+
+</html>
