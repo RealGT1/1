@@ -113,7 +113,12 @@
                 int flag = 0;
                 printf("Enter the value of n: ");
                 scanf("%d", &n);
-        
+                
+                if(n==0){
+                    printf("N is invalid and key not found");
+                    exit(0);
+                }
+
                 if (n > 0) {
                     printf("Enter %d elements in ASCENDING order\n", n);
                     for (int i = 0; i < n; i++) {
@@ -250,6 +255,48 @@
             return 0;
         }
         
+Equivalence:
+    First Attempt -Weak Normal (SN) and Weak Robust Test case for Triangle Problem
+
+    WN1 5 5 5 Equilateral
+    WN2 5 5 6 Isosceles
+    WN3 3 4 5 Scalene
+    WN4 4 1 2 Not a Triangle
+    WR1 -1 5 5  value of a is not in range of permitted values
+    WR2 5 -1 5
+    WR3 5 5 -1
+    WR4 11 5 5
+    WR5 5 11 5
+    WR6 5 5 11
+
+    Second attempt-Strong Robust Test case for Triangle Problem
+
+    SR1 -1 5 5 Value of a not in range
+    SR2 5 -1 5 Value of b not in range
+    SR3 5 5 -1 Value of c not in range
+    SR4 5 -1 -1 Value of b,c not in range
+    SR5 -1 5 -1 Value of a,c not in range
+    SR6 -1 -1 5 Value of a,b not in range
+    SR7 -1 -1 -1 Value of a,b,c not in range
+
+BVA: 
+        x 3 6 not
+        3 x 6 not
+        3 6 x not
+        1 2 -1 not
+        5 5 1 iso 
+        5 5 5 equi
+        5 5 11 not
+        1 5 5 iso 
+        5 1 5 iso
+        10 5 5 not
+        5 10 5 not
+        5 5 10 not
+        5 9 8 scalene
+        11 12 13 out of range
+        7.2 5 4 out of range
+
+
     </div>
 </pre>
     <pre>
@@ -316,8 +363,61 @@
 </pre>
     <pre>
     <div id="div6">
-        <h2>6</h2>
-        
+        <h2> Triangle Decision Table Approach</h2>
+        triangle Decision Table Approach
+
+        #include &lt;stdio.h&gt;
+        #include &lt;ctype.h&gt;
+        #include &lt;conio.h&gt;
+        #include &lt;process.h&gt;
+            
+            int main() {
+                int a, b, c;
+                char choice;
+            
+                while (1) {
+                    printf("Enter three sides of the triangle: \n");
+                    scanf("%d%d%d", &a, &b, &c);
+            
+                    if ((a < b + c) && (b < a + c) && (c < a + b)) {
+                        if ((a == b) && (b == c)) {
+                            printf("Equilateral triangle");
+                        } else if ((a != b) && (a != c) && (b != c)) {
+                            printf("Scalene triangle");
+                        } else {
+                            printf("Isosceles triangle");
+                        }
+                    } else {
+                        printf("Triangle cannot be formed");
+                    }
+            
+                    printf("\nDo you want to check another triangle? (y/n): \n");
+                    choice = getch();
+            
+                    if (tolower(choice) != 'y') {
+                        break;
+                    }
+                }
+            
+                return 0;
+            }
+            
+            Desc,a,b,c,Expected,Actual,Status
+            r1   4 1 2 not
+            r1   1 4 2 not 
+            r1   1 2 4 not 
+            r2   5 5 5 equi
+            r2   2 2 3 iso
+            r2   2 3 2 iso
+            r2   3 2 2 iso 
+            r2   3 4 5 scalene
+    
+    Test Report:
+    1. No of TC’s Executed: 08
+    2. No of Defects Raised:
+    3. No of TC’s Pass:
+    4. No of TC’s Failed:
+
     </div>
     <p>---------------------------------------------------------------------------------</p>
 <pre>
